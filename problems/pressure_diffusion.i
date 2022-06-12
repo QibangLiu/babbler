@@ -19,12 +19,18 @@
   [../]
 []
 
+[Materials]
+  [filter]
+    type = PackedColumn # Provides permeability and viscosity of water through packed 1mm spheres
+  []
+[]
+
 [Kernels]
   [./diffusion]
     #type = ADDiffusion # Laplacian operator
     type = DarcyPressure
     variable = pressure # Operate on the "pressure" variable from above
-    permeability = 0.8451e-09 # (m^2) assumed permeability of the porous medium
+    #permeability = 0.8451e-09 # (m^2) assumed permeability of the porous medium
   [../]
 []
 
