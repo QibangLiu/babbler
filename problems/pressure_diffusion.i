@@ -14,33 +14,33 @@
 []
 
 [Variables]
-  [pressure]
+  [./pressure]
     # Adds a Linear Lagrange variable by default
-  []
+  [../]
 []
 
 [Kernels]
-  [diffusion]
-    #type = ADDiffusion # Laplacian operator
-    type = DarcyPressure
+  [./diffusion]
+    type = ADDiffusion # Laplacian operator
+    #type = DarcyPressure
     variable = pressure # Operate on the "pressure" variable from above
-    permeability = 0.8451e-09 # (m^2) assumed permeability of the porous medium
-  []
+    #permeability = 0.8451e-09 # (m^2) assumed permeability of the porous medium
+  [../]
 []
 
 [BCs]
-  [inlet]
+  [./inlet]
     type = ADDirichletBC # Simple u=value BC
     variable = pressure # Variable to be set
     boundary = 'left' # Name of a sideset in the mesh
     value = 4000 # (Pa) From Figure 2 from paper. First data point for 1mm spheres.
-  []
-  [outlet]
+  [../]
+  [./outlet]
     type = ADDirichletBC
     variable = pressure
     boundary = 'right'
     value = 0 # (Pa) Gives the correct pressure drop from Figure 2 for 1mm spheres
-  []
+  [../]
 []
 
 [Executioner]
